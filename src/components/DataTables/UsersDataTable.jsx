@@ -1,6 +1,5 @@
 import React from "react";
 import {
-    makeStyles,
     Table,
     TableBody,
     TableCell,
@@ -10,39 +9,11 @@ import {
     Paper, Typography
 } from '@material-ui/core';
 import {TableEditButton} from "./table-actions";
+import {useStylesDataTable} from "./userDataTable-styles";
 
-let state = {
-    tableData: [
-        {id: 1, lastName: "Datsiuk", firstName: "Vitalii", email: "v@gmail.com"},
-        {id: 2, lastName: "Snow", firstName: "Jon", email: "J@gmail.com"},
-        {id: 3, lastName: "Stark", firstName: "Arya", email: "arya@gmail.com"},
-        {id: 4, lastName: "Lannister", firstName: "Jeime", email: "la@gmail.com"},
-        {id: 5, lastName: "Targaryen", firstName: "Daenerys", email: "dhn@gmail.com"},
-    ]
-}
-const useStyles = makeStyles((theme) => ({
-    table: {
-        minWidth: 900,
-    },
-    tableContainer: {
-        borderRadius: 15,
-        margin: "10px 10px",
-        maxWidth: 950,
-    },
-    tableHead: {
-        backgroundColor: theme.palette.primary.dark,
-        fontWeight: "bold",
-        color: theme.palette.getContrastText(theme.palette.primary.dark)
-    },
-    name: {
-        fontWeight: "bold",
-        color: theme.palette.secondary.dark
-    }
-}));
 
-const UsersDataTable = () => {
-    const classes = useStyles();
-
+const UsersDataTable = (props) => {
+    const classes = useStylesDataTable();
     return (
         <TableContainer component={Paper} className={classes.tableContainer}>
             <Table className={classes.table} aria-label="simple table">
@@ -55,7 +26,7 @@ const UsersDataTable = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {state.tableData.map((row) => (
+                    {props.state.tableData.map((row) => (
                         <TableRow key={row.id}>
                             <TableCell align="right">{row.id}</TableCell>
                             <TableCell align="left">

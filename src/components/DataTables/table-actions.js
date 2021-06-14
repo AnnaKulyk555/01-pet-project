@@ -1,19 +1,18 @@
 import React from "react";
-import {makeStyles} from '@material-ui/core/styles';
 import {Button} from "@material-ui/core";
 import EditIcon from '@material-ui/icons/Edit';
+import { useHistory } from 'react-router-dom';
+import {useStylesTableActions} from "./tableActions-styles";
 
 
 
 export const TableEditButton = () => {
-    const useStyles = makeStyles((theme) => ({
-        button: {
-            margin: theme.spacing(1),
-        },
-    }));
-    const classes = useStyles();
+    const classes = useStylesTableActions();
+    const history = useHistory();
+
     const openEditForm = () => {
-       alert("Do you want edit user data?")
+        let path = `editForm`;
+        history.push(path);
     }
     return (
         <Button
